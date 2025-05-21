@@ -1,4 +1,9 @@
 
+### 给脚本可执行权限
+```
+chmod +x build_push.sh entrypoint.sh run_node.sh
+```
+
 ### 自己build Docker镜像并上传到dockerhub, 需登录dockerhub账户(如果是x86架构用我的镜像就可以跳过这步)
 ```
 ./build_push.sh yourdockerhubname latest
