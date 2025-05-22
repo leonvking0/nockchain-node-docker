@@ -1,19 +1,17 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-IMAGE="h35xu/nockchain:latest"   # 换成你的镜像
-ROLE="${1:-leader}"              # leader | follower
-PUBKEY="${MINING_PUBKEY:?need-it}"
-NAME="nck-$ROLE"
+IMAGE="h35xu/nockchain:latest"   # 改成你的仓库
+ROLE="${1:-miner}"               # miner | node
+PUBKEY="${MINING_PUBKEY:-}"      # miner 需提供
 
 docker pull "$IMAGE"
 
-docker run -d --name "$NAME" \
+docker run -d --name "nck-$ROLE" \
   -e ROLE="$ROLE" \
   -e MINING_PUBKEY="$PUBKEY" \
-  -p 3005:3005/udp \
-  -p 3006:3006/udp \
+  -p 30333:30333 \
+  -p 9933:9933 \
   "$IMAGE"
 
-echo "✅ $ROLE 节点已启动，查看日志：docker logs -f $NAME"
-
+echo "✔️  容器启动完成：docker logs -f nck-$ROLE"
