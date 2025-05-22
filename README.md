@@ -42,7 +42,7 @@ docker run --rm \
 ```
 ### 提取公钥并启动 miner 示例：
 ```
-PUB=$(grep 'public key:' wallet.txt | sed -E 's/.*base58 "([^"]+)".*/\1/')
+PUB=$(grep -oE 'public key:[^"]+"([^"]+)' wallet.txt | sed -E 's/.*"([^"]+)$/\1/')
 export MINING_PUBKEY="$PUB"
 ./run_node.sh miner                # 启动 miner
 #./run_node.sh node              # 若需 node
