@@ -40,14 +40,14 @@ docker run --rm \
   h35xu/nockchain:latest \
   keygen | tr -d '\0' > wallet.txt
 ```
-### 提取公钥并启动 leader 示例：
+### 提取公钥并启动 miner 示例：
 ```
 PUB=$(grep 'public key:' wallet.txt | sed -E 's/.*base58 "([^"]+)".*/\1/')
 export MINING_PUBKEY="$PUB"
-./run_node.sh leader                # 启动 leader
-#./run_node.sh follower              # 若需 follower
+./run_node.sh miner                # 启动 miner
+#./run_node.sh node              # 若需 node
 ```
 ### 查看日志
 ```
-docker logs -f nck-leader
+docker logs -f nck-miner
 ```
