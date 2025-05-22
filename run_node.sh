@@ -10,8 +10,8 @@ docker pull "$IMAGE"
 docker run -d --name "nck-$ROLE" \
   -e ROLE="$ROLE" \
   -e MINING_PUBKEY="$PUBKEY" \
-  -p 30333:30333 \
-  -p 9933:9933 \
+  -p 3005:3005/udp \
+  -p 3006:3006/udp \
   "$IMAGE"
 
 echo "✔️  容器启动完成：docker logs -f nck-$ROLE"

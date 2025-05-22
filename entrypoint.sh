@@ -8,7 +8,7 @@ PUBKEY="${MINING_PUBKEY:-}"
 case "$ROLE" in
   miner)
     : "${PUBKEY:?MINING_PUBKEY env var required for miner}"
-    exec "$BIN" --mining_pubkey "$PUBKEY" --mine
+    exec "$BIN" --mining-pubkey "$PUBKEY" --mine
     ;;
   node)
     exec "$BIN"

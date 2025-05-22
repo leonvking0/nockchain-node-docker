@@ -43,6 +43,6 @@ RUN useradd -m -u 1000 nck
 USER nck
 WORKDIR /home/nck
 
-# 默认 p2p / rpc 端口（示例，若官方修改请同步）
-EXPOSE 30333 9933
+# -- 显式声明 UDP 3005/3006 --
+EXPOSE 3005/udp 3006/udp
 ENTRYPOINT ["/entrypoint.sh"]
